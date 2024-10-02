@@ -5,6 +5,12 @@
 		"factoryName": {
 			"value": "azdatafactorycde"
 		},
+		"ls_adls_source_accountKey": {
+			"value": ""
+		},
+		"ls_adls_source_properties_typeProperties_url": {
+			"value": "https://adlscde.dfs.core.windows.net/"
+		},
 		"containerUri": {
 			"value": ""
 		},
