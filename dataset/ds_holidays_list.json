@@ -1,0 +1,26 @@
+{
+	"name": "ds_holidays_list",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "holidays.xlsx",
+				"fileSystem": "processed"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Holidays",
+				"type": "String"
+			}
+		]
+	}
+}
