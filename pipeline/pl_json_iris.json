@@ -1,0 +1,122 @@
+{
+	"name": "pl_json_iris",
+	"properties": {
+		"description": "to conveert iris dataset in json format to csv format",
+		"activities": [
+			{
+				"name": "Copy iris json to csv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"additionalColumns": [
+							{
+								"name": "date",
+								"value": {
+									"value": "@formatDateTime(utcNow(),'yyyy-MM-dd')",
+									"type": "Expression"
+								}
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['sepalLength']"
+								},
+								"sink": {
+									"name": "sepalLength"
+								}
+							},
+							{
+								"source": {
+									"path": "$['sepalWidth']"
+								},
+								"sink": {
+									"name": "sepalWidth"
+								}
+							},
+							{
+								"source": {
+									"path": "$['petalLength']"
+								},
+								"sink": {
+									"name": "petalLength"
+								}
+							},
+							{
+								"source": {
+									"path": "$['petalWidth']"
+								},
+								"sink": {
+									"name": "petalWidth"
+								}
+							},
+							{
+								"source": {
+									"path": "$['species']"
+								},
+								"sink": {
+									"name": "species"
+								}
+							},
+							{
+								"source": {
+									"path": "$['date']"
+								},
+								"sink": {
+									"name": "date",
+									"type": "Date"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_source_iris",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_iris_sink",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

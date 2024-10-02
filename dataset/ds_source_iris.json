@@ -1,0 +1,38 @@
+{
+	"name": "ds_source_iris",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "iris.json",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"sepalLength": {
+					"type": "number"
+				},
+				"sepalWidth": {
+					"type": "number"
+				},
+				"petalLength": {
+					"type": "number"
+				},
+				"petalWidth": {
+					"type": "number"
+				},
+				"species": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
