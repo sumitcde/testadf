@@ -1,0 +1,36 @@
+{
+	"name": "ds_sql_shir",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Dept",
+				"type": "varchar"
+			},
+			{
+				"name": "Salary",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "address",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			}
+		]
+	}
+}

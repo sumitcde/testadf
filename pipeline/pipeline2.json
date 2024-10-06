@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
-				"type": "ExecuteDataFlow",
+				"name": "Copy data sql data incrementally",
+				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,12 +15,19 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
-					"traceLevel": "Fine"
-				}
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sql_shir",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
