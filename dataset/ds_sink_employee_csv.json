@@ -1,0 +1,23 @@
+{
+	"name": "ds_sink_employee_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "data_6706a7f0-ec5a-4ec5-af21-07bd349a2827_a9fe6bd1-512e-41b5-8552-e0635c232e55.txt",
+				"fileSystem": "shir"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
