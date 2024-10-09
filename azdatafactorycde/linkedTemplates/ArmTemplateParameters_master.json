@@ -5,11 +5,35 @@
 		"factoryName": {
 			"value": "azdatafactorycde"
 		},
+		"ls_SqlServer1_password": {
+			"value": ""
+		},
 		"ls_adls_source_accountKey": {
 			"value": ""
 		},
+		"ls_sql_azure_password": {
+			"value": ""
+		},
+		"ls_SqlServer1_properties_typeProperties_server": {
+			"value": "LAPTOP-T06K1QSD\\SQLEXPRESS"
+		},
+		"ls_SqlServer1_properties_typeProperties_database": {
+			"value": "Customer"
+		},
+		"ls_SqlServer1_properties_typeProperties_userName": {
+			"value": "sumit2"
+		},
 		"ls_adls_source_properties_typeProperties_url": {
 			"value": "https://adlscde.dfs.core.windows.net/"
+		},
+		"ls_sql_azure_properties_typeProperties_server": {
+			"value": "dbpracticewns.database.windows.net"
+		},
+		"ls_sql_azure_properties_typeProperties_database": {
+			"value": "dbpractice"
+		},
+		"ls_sql_azure_properties_typeProperties_userName": {
+			"value": "dbwnspractice"
 		},
 		"containerUri": {
 			"value": ""

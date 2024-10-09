@@ -7,13 +7,45 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "azdatafactorycde"
 		},
+		"ls_SqlServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_SqlServer1'"
+		},
 		"ls_adls_source_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_adls_source'"
 		},
+		"ls_sql_azure_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_sql_azure'"
+		},
+		"ls_SqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-T06K1QSD\\SQLEXPRESS"
+		},
+		"ls_SqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Customer"
+		},
+		"ls_SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sumit2"
+		},
 		"ls_adls_source_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlscde.dfs.core.windows.net/"
+		},
+		"ls_sql_azure_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "dbpracticewns.database.windows.net"
+		},
+		"ls_sql_azure_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dbpractice"
+		},
+		"ls_sql_azure_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "dbwnspractice"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,12 +77,56 @@
 					"ls_adls_source_accountKey": {
 						"value": "[parameters('ls_adls_source_accountKey')]"
 					},
+					"ls_sql_azure_password": {
+						"value": "[parameters('ls_sql_azure_password')]"
+					},
+					"ls_SqlServer1_password": {
+						"value": "[parameters('ls_SqlServer1_password')]"
+					},
 					"ls_adls_source_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_source_properties_typeProperties_url')]"
+					},
+					"ls_sql_azure_properties_typeProperties_server": {
+						"value": "[parameters('ls_sql_azure_properties_typeProperties_server')]"
+					},
+					"ls_sql_azure_properties_typeProperties_database": {
+						"value": "[parameters('ls_sql_azure_properties_typeProperties_database')]"
+					},
+					"ls_sql_azure_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sql_azure_properties_typeProperties_userName')]"
+					},
+					"ls_SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('ls_SqlServer1_properties_typeProperties_server')]"
+					},
+					"ls_SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('ls_SqlServer1_properties_typeProperties_database')]"
+					},
+					"ls_SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('ls_SqlServer1_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "azdatafactorycde_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'azdatafactorycde_ArmTemplate_0')]"
+			]
 		}
 	]
 }
